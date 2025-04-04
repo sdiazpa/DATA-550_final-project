@@ -1,0 +1,173 @@
+---
+title: "Final Project"
+author: "Santino Diaz-Palma"
+date: "`r Sys.Date()`"
+output: html_document
+params:
+  production: TRUE
+---
+
+```{r, set-chunk-opts, echo = FALSE, eval = params$production}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE, warning = FALSE, message = FALSE
+)
+```
+
+```{r, here-i-am}
+here::i_am(
+  "final-project.Rmd"
+)
+```
+
+```{r, data-call-for-in-line}
+data <- readRDS(
+    file = here::here("ready-data/data_clean.rds")
+)
+```
+------------------------------------------------------------------------
+
+# Introduction
+
+For my final project in DATA-550, I have selected a dataset from UCI ML Repository. Link = <https://archive.ics.uci.edu/dataset/519/heart+failure+clinical+records>
+
+This dataset explores the medical records of 299 patients who had heart failure. Featured within the dataset are 13 clinic variables with data collected during follow-up periods of the study. Those variables are as follows:
+
+| Variable | Type | Description |
+|------------------------|------------------------|------------------------|
+| age | Integer | Age of patient (yrs) |
+| anaemia | Binary (1=yes, 0=no) | Is the patient anemic? (do they have a decrease of red blood cells or hemoglobin? |
+| creatinine_phosphokinase | Integer | CPK (Creatine Phosphokinase) Enzyme level in blood (mcg/L) |
+| diabetes | Binary (1=yes, 0=no) | Is the patient diabetic? |
+| ejection_fraction | Integer | proportion of blood ejected from the heart with each contraction (reported as %) |
+| high_blood_pressure | Binary (1=yes, 0=no) | Is the patient hypertensive? |
+| platelets | Continuous | Count of Platelets in blood |
+| serum_creatinine | Continuous | Serum creatinine level (mg/dL) in blood |
+| serum_sodium | Integer | Serum sodium level (mEq/L) |
+| sex | Binary (1=yes, 0=no) | Female or Male |
+| smoking | Binary (1=yes, 0=no) | Is the patient a smoker? |
+| time | Integer | Follow-up period (days) |
+| death_event | Binary (1=yes, 0=no) | Did the patient die during follow-up? |
+
+: Table of Variables within dataset, their types, and descriptions
+
+The primary objective of this project is to conduct an analysis that includes both descriptive and inferential statistics to (1) summarize patient characteristics and (2) examine factors associated with heart failure. Specific components of that analysis include:
+
+1.  Creating a Table 1 (Report of demographic and clinical characteristics for the study participants - stratified on heart failure death).
+
+2.  Perform a Regression Analyses to assess the association between heart failure and predictor values
+
+    1.  The first model will specifically look at the association between heart failure and demographic predictors (e.g. age, sex, diabetes, smoking).
+
+    2.  The second model will expand the first, adding in certain clinical predictors (e.g. ejection fraction, cytokine and chemokine levels).
+
+    3.  Comparison of the two allows consideration of which one may be statistically better at prediction of death.
+
+3.  Visualize mortality due to heart failure for patients over time.
+
+------------------------------------------------------------------------
+
+# Descriptive Analysis
+
+## Table 1
+
+Characteristics of the `r nrow(data)` patients from the heart failure study (dataset available online) are found below. Descriptive (factor) variables are reported with counts and percentages, whereas continuous (and integer) variables are reported with mean (Standard deviation):
+
+```{r, table1}
+table_one <- readRDS(
+  file = here::here("tables/table_one.rds")
+)
+
+table_one
+
+```
+
+Some highlights are:
+
+-   `r sum(data$sex == "Male")` (`r round(mean(data$sex == "Male") * 100, 1)`%) are male,
+
+-   `r sum(data$smoking == "Yes")` (`r round(mean(data$smoking == "Yes") * 100, 1)`%) are smokers
+
+-   `r sum(data$diabetes == "Yes")` (`r round(mean(data$diabetes == "Yes") * 100, 1)`%) have diabetes.
+
+
+# Graphical analysis
+
+Below we report an box-plot that showcases the distribution of age for patients, based on their death status (alive or dead). 
+
+```{r, plot-data}
+#| fig.align = "center",
+#| out.width = "600px"
+
+knitr::include_graphics(
+  here::here("figures/boxplot-age.png")
+)
+
+```
+As the figure shows, generally all statistics for age of those whom died are higher. This may suggest that age itself is a significant variable to consider in assosication testing. 
+
+# Regression Analysis
+
+## Model 1
+
+The first regression model is a logistical regression that looks at demographic predictors (age, sex, diabetes, and smoking).
+
+```{r, fit-primary-model}
+
+both_regression_tables <- readRDS(
+  file = here::here("tables/both_regression_tables.rds")
+)
+both_regression_tables$first
+
+```
+We can plot the output of that regression like this: 
+
+```{r}
+#| fig.align = "center",
+#| out.width = "600px"
+knitr::include_graphics(
+  here::here("figures/regression-model-one.png")
+)
+
+```
+
+In this figure, we can see that age has a statistically significant positive association with the likelihood of death (OR > 1), whereas sex, diabetes, and smoking do not show significant associations in this model (they cross the null). This supports our slight considerations made earlier with the boxplot. 
+
+
+## Secondary model
+
+In this analysis, we conducted another logistic regression. However, this one includes both demographic and clinical characteristics. 
+
+```{r, secondary-model}
+both_regression_tables <- readRDS(
+  file = here::here("tables/both_regression_tables.rds")
+)
+both_regression_tables$second
+```
+
+Similarly to the first model, we can plot the output of its regression like this: 
+
+```{r}
+#| fig.align = "center",
+#| out.width = "600px"
+knitr::include_graphics(
+  here::here("figures/regression-model-two.png")
+)
+
+```
+
+In this figure, we can see that age, in addition to Serum Creatinine level has a statistically significant positive association with the likelihood of death (OR > 1). Serum sodium level also looks to have statistically significant negative association with the likelihood of death (OR < 1). 
+
+## Comparison of two models
+
+In order to determine which model performs better, we used an anova to compare the two.   
+```{r, comparison-models}
+both_anova <- readRDS(
+  file = here::here("tables/anova.rds")
+)
+
+
+```
+
+From this anova output, we can see that model 2 has a highly significant p-value (`r both_anova$p_value_both`), which provides statistical evidence that it performs better in predicting death. This finding makes sense, as more clinical components could offer a more comprehensive insight into the patient's condition, and it's severity.
+
