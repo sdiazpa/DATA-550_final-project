@@ -1,2 +1,7 @@
 tables/*.rds
-figures/*png
+figures/.png
+.Rproj.user/
+.DS_Store
+.Rhistory
+final-project.Rproj
+reports/
