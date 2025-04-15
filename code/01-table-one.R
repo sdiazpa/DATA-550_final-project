@@ -1,4 +1,7 @@
 
+here::i_am(
+    "code/01-table-one.R"
+)
 
 data <- readRDS(
     file = here::here("ready-data/data_clean.rds")

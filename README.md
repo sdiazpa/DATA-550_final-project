@@ -10,11 +10,27 @@ Within this report, you will find an analysis based on the dataset from UCI ML R
 
 ------------------------------------------------------------------------
 
-## **To generate the final report: (in terminal)**
+## **To generate the final report:** 
 
-1.  Clear the contents of any already made products using ‘make clean’.
+#### Part 1: Package environment setup. To ensure reproducibility, this report will utilize the R package 'RENV'.
 
-2.  After all items are cleared from the ‘Tables’ and ‘Figures’ folders, use ‘make’ to complete the final report, titled ‘Final-project.html’.
+1.  Check if RENV is installing by using the following code in the R Console:
+
+    `"renv" %in% row.names(installed.packages())`
+
+    -   IF the output is '`FALSE`', you must install RENV using: `install.packages("renv")`
+
+2.  In an R console, use `setwd` and `getwd` to confirm that the working directory is the project directory.
+
+3.  Once inside of the project directory, restore the package library using `renv::restore()`.
+
+#### Part 2: Making Final Report
+
+1.  In the terminal:
+
+    -   Clear the contents of any (residual) already made products using `‘make clean’`
+
+    -   After all items are cleared from the ‘Tables’ and ‘Figures’ folders, use `‘make’` to complete the final report, titled ‘Final-project.html’.
 
 ------------------------------------------------------------------------
 

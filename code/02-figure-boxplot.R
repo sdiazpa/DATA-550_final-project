@@ -1,5 +1,8 @@
 
 
+here::i_am(
+    "code/02-figure-boxplotg.R"
+)
 
 data <- readRDS(
     file = here::here("ready-data/data_clean.rds")
@@ -19,7 +22,7 @@ boxplot <-
         y = "Age (Years)",
         fill = "Death Event"
     ) +
-    theme_minimal() +
+    theme_light() +
     theme(
         plot.title = element_text(hjust = 0.5, size = 16)
     )
