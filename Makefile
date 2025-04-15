@@ -21,4 +21,10 @@ figures/regression-model-one.png figures/regression-model-two.png&: \
 
 .PHONY: clean
 clean:
-	rm -f tables/*.rds && rm -f final-project.html && rm -f figures/*.png
+	rm -f tables/*.rds && rm -f final-project.html && rm -f figures/*.png 
+	
+.PHONY: install
+install: 
+	Rscript code/05-RENV.R
+	
+	
