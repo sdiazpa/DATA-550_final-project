@@ -16,12 +16,12 @@ Codes for building the tables and figures required within the ‘final-report.Rm
 
 | Code file name | Description |
 |------------------------------------|------------------------------------|
-| 00-clean-data.R | This code file showcases how the ‘data-clean.rds’ file within ‘ready-data’ was created. |
-| 01-table-one.r | This code showcases how table one was created. |
-| 02-figure-boxplot.R | This code showcases how the boxplot figure was created. |
-| 03-regression-models.R | This code showcases how both regression models, and how their output tables (and subsequent figures) were created. |
-| 04-render-report.R | This code showcases how the report was rendered. |
-| 05-RENV.R | This code showcases how steps for installing, activating, and restoring RENV were completed. |
+| `00-clean-data.R` | This code file showcases how the ‘data-clean.rds’ file within ‘ready-data’ was created. |
+| `01-table-one.r` | This code showcases how table one was created. |
+| `02-figure-boxplot.R` | This code showcases how the boxplot figure was created. |
+| `03-regression-models.R` | This code showcases how both regression models, and how their output tables (and subsequent figures) were created. |
+| `04-render-report.R` | This code showcases how the report was rendered. |
+| `05-RENV.R` | This code showcases how steps for installing, activating, and restoring RENV were completed. |
 
 Table describing code files within ‘code’ folder.
 
@@ -32,21 +32,11 @@ Table describing code files within ‘code’ folder.
 #### Step 1: Package environment setup. To ensure reproducibility, this report will utilize the R package '`RENV`'.
 
 1.  **In an R console**, use `setwd` and `getwd` to confirm that the working directory is the project directory.
+
 2.  Once inside of the appropriate project directory, navigate to the terminal and run: `make install` .
+
     -   This should automatically consider if RENV is installed (and if not, it will install it).
     -   Additionally, it will ensure that RENV is activated and package library is restored.
-
-1.  Check if `RENV` is installing by using the following code in the R Console:
-
-    `"renv" %in% row.names(installed.packages())`
-
-    -   IF the output is '`FALSE`', you must install RENV using: `install.packages("renv")`
-
-2.  **In an R console**, use `setwd` and `getwd` to confirm that the working directory is the project directory.
-
-    1.  Once inside of the project directory:
-        1.  Run `source("renv/activate.R")`
-        2.  Restore the package library using `renv::restore()`.
 
 #### Step 2: Making Final Report
 
