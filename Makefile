@@ -28,3 +28,35 @@ install:
 	Rscript code/05-RENV.R
 	
 	
+	
+#rule to perform docker tasks
+PROJECTFILES = final-project.Rmd \
+	code/05-RENV.R \
+	code/00-clean-data.R \
+	code/01-table-one.R \
+	code/02-figure-boxplot \
+	code/03-regression-models \
+	code/04-render-report \
+	ready-data/data_clean \
+	Makefile \
+	README.md \
+	final-project.Rmd \ 
+	.gitignore
+REVFILES = renv.lock \
+	renv/activate.R \
+	renv/settings.json \
+	.Rprofile
+
+final_project_image: Dockerfile $(PROJECTFILES) $(RENVFILES)
+	docker build -t sdiazpa/final_project_image .
+	touch $@
+
+#windows users:
+wind_docker_run:
+	docker run -v /"$$(pwd)/report":/project/report sdiazpa/final_project_image
+
+#mac users:
+mac_docker_run:
+	docker run -v "$$(pwd)/report":/project/report sdiazpa/final_project_image
+
+	

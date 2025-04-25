@@ -27,9 +27,43 @@ Table describing code files within ‘code’ folder.
 
 ------------------------------------------------------------------------
 
-## 🖍️ **To generate the final report** 🖍️
+## 🖍️ **To generate the final report** (with Docker) 🖍️
 
-#### Step 1: Package environment setup. To ensure reproducibility, this report will utilize the R package '`RENV`'.
+### STEP 1: Build the Docker image using one of the following options:
+
+**OPTION 1**: In terminal, run:
+
+```         
+  `make final_project_image`
+```
+
+**OPTION 2**: Pull image directly from dockerhub ( )
+
+**OPTION 3**:
+
+```         
+ `docker build -t sdiazpa/final_project_image .`
+```
+
+### STEP 2: Create the report:
+
+For Windows users:
+
+```         
+`make wind_docker_run`
+```
+
+For Mac users:
+
+```         
+`make mac_docker_run`
+```
+
+------------------------------------------------------------------------
+
+## 🖍️ **To generate the final report** (w/o Docker) 🖍️
+
+### Step 1: Package environment setup. To ensure reproducibility, this report will utilize the R package '`RENV`'.
 
 1.  **In an R console**, use `setwd` and `getwd` to confirm that the working directory is the project directory.
 
@@ -38,7 +72,7 @@ Table describing code files within ‘code’ folder.
     -   This should automatically consider if RENV is installed (and if not, it will install it).
     -   Additionally, it will ensure that RENV is activated and package library is restored.
 
-#### Step 2: Making Final Report
+### Step 2: Making Final Report
 
 1.  **In the terminal:**
 
