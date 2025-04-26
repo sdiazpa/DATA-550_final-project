@@ -58,5 +58,3 @@ wind_docker_run:
 #mac users:
 mac_docker_run:
 	docker run -v "$$(pwd)/report":/project/report sdiazpa/final_project_image
-
-	
