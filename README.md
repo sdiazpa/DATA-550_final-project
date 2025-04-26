@@ -31,18 +31,26 @@ Table describing code files within ‘code’ folder.
 
 ### STEP 1: Build the Docker image using one of the following options:
 
-**OPTION 1**: In terminal, run:
+[ Note: If you get an error about "manifest" then include, you may need to include:
 
-```         
-  `make final_project_image`
+`--platform=linux/amd64` or `--platform=linux/arm64` ]
+
+**OPTION 1**: In terminal, run a make command:
+
+``` bash
+  make final_project_image
 ```
 
-**OPTION 2**: Pull image directly from dockerhub ( )
+**OPTION 2**: Pull image directly from dockerhub (<https://hub.docker.com/r/sdiazpa/final_project_image>)
 
-**OPTION 3**:
+``` bash
+  docker pull sdiazpa/final_project_image
+```
 
-```         
- `docker build -t sdiazpa/final_project_image .`
+**OPTION 3**: Build image manually
+
+``` bash
+ docker build -t sdiazpa/final_project_image .
 ```
 
 ### STEP 2: Create the report:
@@ -50,14 +58,16 @@ Table describing code files within ‘code’ folder.
 For Windows users:
 
 ```         
-`make wind_docker_run`
+make wind_docker_run
 ```
 
 For Mac users:
 
 ```         
-`make mac_docker_run`
+make mac_docker_run
 ```
+
+### STEP 3: Find report in 'reports' folder.
 
 ------------------------------------------------------------------------
 
@@ -78,6 +88,6 @@ For Mac users:
 
     -   Clear the contents of any (residual) already made products using `‘make clean’`
 
-    -   After all items are cleared from the ‘Tables’ and ‘Figures’ folders, use `‘make’` to complete the final report, titled ‘Final-project.html’.
+    -   After all items are cleared from the ‘Tables’ and ‘Figures’ folders, use `‘make’` to complete the final report, titled ‘Final-project.html’. It will be available in the main project directory.
 
 ------------------------------------------------------------------------
