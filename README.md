@@ -33,7 +33,7 @@ Table describing code files within ‘code’ folder.
 
 [ Note: If you get an error about "manifest" then include, you may need to include:
 
-`--platform=linux/amd64` or `--platform=linux/arm64` ]
+`--platform=linux/amd64` or `--platform=linux/arm64` (e.g. you can add `--platform=linux/amd64` before the '`-t`' component in option 3]
 
 **OPTION 1**: In terminal, run a make command:
 
