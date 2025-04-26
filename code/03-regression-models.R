@@ -8,7 +8,7 @@ library(ggplot2)
 library(gtsummary)
 
 data <- readRDS(
-    file = here::here("ready-data/data_clean.rds")
+    file = here::here("data/data_clean.rds")
 )
 
 
@@ -21,9 +21,7 @@ mod1 <- glm(
 )
 
 first_regression_table <- 
-    tbl_regression(mod1, exponentiate = TRUE) |>
-    add_global_p()
-
+    tbl_regression(mod1, exponentiate = TRUE) 
 
 regression_model_one <- ggplot(
     first_regression_table$table_body, 
@@ -43,8 +41,7 @@ mod2 <- glm(DEATH_EVENT ~ age + sex + diabetes + smoking + anaemia +
             family = "binomial")
 
 second_regression_table <- 
-    tbl_regression(mod2, exponentiate = TRUE) |>
-    add_global_p()
+    tbl_regression(mod2, exponentiate = TRUE) 
 
 regression_model_two <- ggplot(second_regression_table$table_body, 
            aes(x = term, 
@@ -77,7 +74,7 @@ both_models <- list(
 )
 saveRDS(
     both_models,
-    file = here::here("tables/both_models.rds")
+    file = here::here("output/both_models.rds")
 )
 
 both_regression_tables <- list(
@@ -87,18 +84,18 @@ both_regression_tables <- list(
 
 saveRDS(
     both_regression_tables,
-    file = here::here("tables/both_regression_tables.rds")
+    file = here::here("output/both_regression_tables.rds")
 )
 
 # saving regression plots
 ggsave(
-    here::here("figures/regression-model-one.png"),
+    here::here("output/regression-model-one.png"),
     plot = regression_model_one,
     device = "png"
 )
 
 ggsave(
-    here::here("figures/regression-model-two.png"),
+    here::here("output/regression-model-two.png"),
     plot = regression_model_two,
     device = "png"
 )
@@ -111,7 +108,7 @@ both_anova <- list (
 
 saveRDS(
     both_anova,
-    file = here::here("tables/anova.rds")
+    file = here::here("output/anova.rds")
 )
 
 

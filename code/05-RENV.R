@@ -1,8 +1,7 @@
+
 here::i_am(
     "code/05-RENV.R"
 )
-
-
 
 if (!("renv" %in% row.names(installed.packages()))) {
     message("'renv' not found. Installing 'renv'...")

@@ -1,11 +1,11 @@
 
 
 here::i_am(
-    "code/02-figure-boxplotg.R"
+    "code/02-figure-boxplot.R"
 )
 
 data <- readRDS(
-    file = here::here("ready-data/data_clean.rds")
+    file = here::here("data/data_clean.rds")
 )
 
 library(ggplot2)
@@ -31,7 +31,7 @@ boxplot
 
 
 ggsave(
-    here::here("figures/boxplot-age.png"),
+    here::here("output/boxplot-age.png"),
     plot = boxplot,
     device = "png"
 )

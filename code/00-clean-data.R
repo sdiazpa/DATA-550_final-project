@@ -1,4 +1,4 @@
-absolute_path_to_data <- here::here("raw-data", "heart_failure_clinical_records_dataset.csv")
+absolute_path_to_data <- here::here("data", "heart_failure_clinical_records_dataset.csv")
 data <- read.csv(absolute_path_to_data, header = TRUE)
 
 library(labelled)
@@ -36,7 +36,7 @@ var_label(data) <- list(
 
 saveRDS(
     data, 
-    file = here::here("ready-data/data_clean.rds")
+    file = here::here("data/data_clean.rds")
 )
 
 

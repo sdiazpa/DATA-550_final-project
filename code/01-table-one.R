@@ -4,7 +4,7 @@ here::i_am(
 )
 
 data <- readRDS(
-    file = here::here("ready-data/data_clean.rds")
+    file = here::here("data/data_clean.rds")
 )
 
 library(gtsummary)
@@ -36,7 +36,7 @@ table_one
 
 saveRDS(
     table_one,
-    file = here::here("tables/table_one.rds")
+    file = here::here("output/table_one.rds")
 )
 
 
