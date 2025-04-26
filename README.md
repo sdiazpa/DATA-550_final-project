@@ -38,19 +38,19 @@ Table describing code files within ‘code’ folder.
 **OPTION 1**: In terminal, run a make command:
 
 ``` bash
-  make final_project_image
+  make final_project
 ```
 
-**OPTION 2**: Pull image directly from dockerhub (<https://hub.docker.com/r/sdiazpa/final_project_image>)
+**OPTION 2**: Pull image directly from dockerhub (<https://hub.docker.com/r/sdiazpa/final_project>)
 
 ``` bash
-  docker pull sdiazpa/final_project_image
+  docker pull sdiazpa/final_project
 ```
 
 **OPTION 3**: Build image manually
 
 ``` bash
- docker build -t sdiazpa/final_project_image .
+ docker build -t sdiazpa/final_project .
 ```
 
 ### STEP 2: Create the report:
