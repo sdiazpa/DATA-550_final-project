@@ -22,7 +22,7 @@ here::i_am(
 
 ```{r, data-call-for-in-line}
 data <- readRDS(
-    file = here::here("ready-data/data_clean.rds")
+    file = here::here("data/data_clean.rds")
 )
 ```
 ------------------------------------------------------------------------
@@ -75,7 +75,7 @@ Characteristics of the `r nrow(data)` patients from the heart failure study (dat
 
 ```{r, table1}
 table_one <- readRDS(
-  file = here::here("tables/table_one.rds")
+  file = here::here("output/table_one.rds")
 )
 
 table_one
@@ -100,7 +100,7 @@ Below we report an box-plot that showcases the distribution of age for patients,
 #| out.width = "600px"
 
 knitr::include_graphics(
-  here::here("figures/boxplot-age.png")
+  here::here("output/boxplot-age.png")
 )
 
 ```
@@ -115,7 +115,7 @@ The first regression model is a logistical regression that looks at demographic 
 ```{r, fit-primary-model}
 
 both_regression_tables <- readRDS(
-  file = here::here("tables/both_regression_tables.rds")
+  file = here::here("output/both_regression_tables.rds")
 )
 both_regression_tables$first
 
@@ -126,7 +126,7 @@ We can plot the output of that regression like this:
 #| fig.align = "center",
 #| out.width = "600px"
 knitr::include_graphics(
-  here::here("figures/regression-model-one.png")
+  here::here("output/regression-model-one.png")
 )
 
 ```
@@ -140,7 +140,7 @@ In this analysis, we conducted another logistic regression. However, this one in
 
 ```{r, secondary-model}
 both_regression_tables <- readRDS(
-  file = here::here("tables/both_regression_tables.rds")
+  file = here::here("output/both_regression_tables.rds")
 )
 both_regression_tables$second
 ```
@@ -151,7 +151,7 @@ Similarly to the first model, we can plot the output of its regression like this
 #| fig.align = "center",
 #| out.width = "600px"
 knitr::include_graphics(
-  here::here("figures/regression-model-two.png")
+  here::here("output/regression-model-two.png")
 )
 
 ```
@@ -163,7 +163,7 @@ In this figure, we can see that age, in addition to Serum Creatinine level has a
 In order to determine which model performs better, we used an anova to compare the two.   
 ```{r, comparison-models}
 both_anova <- readRDS(
-  file = here::here("tables/anova.rds")
+  file = here::here("output/anova.rds")
 )
 
 
