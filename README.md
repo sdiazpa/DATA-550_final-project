@@ -79,9 +79,6 @@ make mac_docker_run
 
 2.  Once inside of the appropriate project directory, navigate to the terminal and run: `make install` .
 
-    -   This should automatically consider if RENV is installed (and if not, it will install it).
-    -   Additionally, it will ensure that RENV is activated and package library is restored.
-
 ### Step 2: Making Final Report
 
 1.  **In the terminal:**
