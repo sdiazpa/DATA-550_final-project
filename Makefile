@@ -46,7 +46,7 @@ PROJECTFILES = final-project.Rmd \
 	README.md \
 	.gitignore
 RENVFILES = renv.lock renv/activate.R renv/settings.json .Rprofile
-final_project_image: Dockerfile $(PROJECTFILES) $(RENVFILES)
+final_project: Dockerfile $(PROJECTFILES) $(RENVFILES)
 	docker build -t sdiazpa/final_project .
 	touch $@
 # windows users:
