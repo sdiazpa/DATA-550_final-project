@@ -47,11 +47,11 @@ PROJECTFILES = final-project.Rmd \
 	.gitignore
 RENVFILES = renv.lock renv/activate.R renv/settings.json .Rprofile
 final_project_image: Dockerfile $(PROJECTFILES) $(RENVFILES)
-	docker build -t sdiazpa/final_project_image .
+	docker build -t sdiazpa/final_project .
 	touch $@
 # windows users:
 wind_docker_run:
-	docker run -v "$$(pwd)"/report:/project/reports sdiazpa/final_project_image
+	docker run -v "$$(pwd)"/report:/project/reports sdiazpa/final_project
 # mac users:
 mac_docker_run:
-	docker run --platform linux/amd64 -v "$$(pwd)"/report:/project/report sdiazpa/final_project_image
+	docker run --platform linux/amd64 -v "$$(pwd)"/report:/project/report sdiazpa/final_project
