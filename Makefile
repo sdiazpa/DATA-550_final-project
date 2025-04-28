@@ -51,7 +51,7 @@ final_project: Dockerfile $(PROJECTFILES) $(RENVFILES)
 	touch $@
 # windows users:
 wind_docker_run:
-	docker run -v "$$(pwd)"/report:/project/reports sdiazpa/final_project
+	docker run -v "$$(pwd)"/report:/project/report sdiazpa/final_project
 # mac users:
 mac_docker_run:
 	docker run --platform linux/amd64 -v "$$(pwd)"/report:/project/report sdiazpa/final_project
